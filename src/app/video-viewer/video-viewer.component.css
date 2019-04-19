@@ -1,0 +1,47 @@
+div[appVAlignParent] {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div[appVAlign] {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.ui.segment:first-child {
+    border-radius: 0 0 .28571429rem .28571429rem;
+}
+
+.actions {
+    text-align: center;
+    padding-top: 6px !important;
+    padding-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .container {
+        margin: 0 0 !important;
+    }
+
+    .ui.segment{
+        border-radius: 0 !important;
+        width: 100%;
+        text-align: left;
+        min-width: 318px;
+    }
+
+}
+
+.ui.horizontal.list{
+    line-height: 1;
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile.hidden {
+        display: none !important
+    }
+}
