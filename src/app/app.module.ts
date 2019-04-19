@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { VideoViewerModule } from './video-viewer/video-viewer.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
     imports: [
         BrowserModule,
         SharedModule,
+        VideoViewerModule,
         AppRoutingModule
     ],
     providers: [],
