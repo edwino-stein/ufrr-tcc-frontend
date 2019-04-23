@@ -1,11 +1,15 @@
 import { Component, OnInit, ElementRef, Renderer, HostListener, Input} from '@angular/core';
 
+import { environment } from '../../../../environments/environment'
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent implements OnInit {
+
+    env: object = environment;
 
     @Input() aspectRatio: string = "4:3";
     private _aspectRario: number[];
@@ -21,7 +25,7 @@ export class VideoComponent implements OnInit {
     constructor(
         private elementRef: ElementRef,
         private renderer: Renderer
-    ) {}
+    ){}
 
     ngOnInit() {
 
