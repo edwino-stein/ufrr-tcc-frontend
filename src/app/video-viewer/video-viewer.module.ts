@@ -5,6 +5,7 @@ import { VideoViewerRoutingModule } from './video-viewer-routing.module';
 import { VideoViewerComponent } from './video-viewer.component';
 import { VideoComponent } from './components/video/video.component';
 import { SharedModule } from '../shared/shared.module';
+import { JsMpegService } from './services/js-mpeg.service';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,9 @@ import { SharedModule } from '../shared/shared.module';
         CommonModule,
         SharedModule,
         VideoViewerRoutingModule
+    ],
+    providers:[
+        JsMpegService
     ]
 })
 export class VideoViewerModule { }
