@@ -7,12 +7,14 @@ import { VideoComponent } from './components/video/video.component';
 import { SharedModule } from '../shared/shared.module';
 import { JsMpegService } from './services/js-mpeg.service';
 import { MpegPlayerComponent } from './components/mpeg-player/mpeg-player.component';
+import { VideoStatusBarItemComponent } from './components/video-status-bar-item/video-status-bar-item.component';
 
 @NgModule({
     declarations: [
         VideoViewerComponent,
         VideoComponent,
-        MpegPlayerComponent
+        MpegPlayerComponent,
+        VideoStatusBarItemComponent
     ],
     imports: [
         CommonModule,
