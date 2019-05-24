@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from './shared/shared.module';
 import { VideoViewerModule } from './video-viewer/video-viewer.module';
+import { SettingsModule } from './settings/settings.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { VideoViewerModule } from './video-viewer/video-viewer.module';
         BrowserModule,
         SharedModule,
         VideoViewerModule,
+        SettingsModule,
         AppRoutingModule
     ],
     providers: [],
