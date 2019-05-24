@@ -9,4 +9,52 @@
             </div>
         </h2>
     </app-settings-page-content>
+
+    <a scrollTo="#controlstream" class="item">Controlar transmissão</a>
+    <app-settings-page-content id="controlstream">
+        <h3 class="ui dividing header">Controlar transmissão</h3>
+        <div class="ui form error success">
+            <div class="field">
+                <div class="ui success message">
+                    <div class="header">Transmissão está em execução...</div>
+                    <p>Atualmente <b>XX</b> pessoas estão acompanhando.</p>
+                </div>
+                <div class="ui info message">
+                    <div class="header">Transmissão está em parada...</div>
+                    <p>Para começar a transmissão, basta clicar em <b>Começar Transmissão </b>.</p>
+                </div>
+                <div class="ui error message">
+                    <div class="header">Ocorreu algum erro com a transmissão...</div>
+                    <p>Tente reinicar o aparelho caso o erro pessistir.</p>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui column centered grid">
+                    <button class="ui large labeled icon red button stream-controller">
+                        <i class="stop icon"></i>
+                        Parar transmissão
+                    </button>
+                </div>
+            </div>
+        </div>
+    </app-settings-page-content>
+    <a scrollTo="#teststream" class="item">Testar Transmissão</a>
+    <app-settings-page-content id="teststream">
+        <h3 class="ui dividing header">Testar Transmissão</h3>
+        <div class="ui form error warning">
+            <p>Utilize essa opção para testes e configução do aparelho.</p>
+            <div class="ui warning message">
+                <div class="header">Não é possivel realizar o teste enquanto uma transmissão estiver em andamento.</div>
+                <p>Pare a transmissão atual para começar o teste.</p>
+            </div>
+            <div class="field">
+                <div class="ui column centered grid">
+                    <button class="ui large labeled icon disabled button stream-controller">
+                        <i class="wrench icon"></i>
+                        Começar teste
+                    </button>
+                </div>
+            </div>
+        </div>
+    </app-settings-page-content>
 </app-settings-page>
