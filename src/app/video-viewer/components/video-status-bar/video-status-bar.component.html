@@ -1,0 +1,16 @@
+<div class="ui container">
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="eight wide mobile twelve wide tablet thirteen wide computer column">
+                <div class="ui horizontal divided list">
+                    <ng-content select="[type=status]"></ng-content>
+                </div>
+            </div>
+            <div class="actions eight wide mobile four wide tablet three wide computer column">
+                <div class="ui horizontal list">
+                    <ng-content select="[type=action]"></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
