@@ -1,0 +1,7 @@
+.ui.pointing.menu {
+    margin-top: 1rem;
+}
+
+.ui.pointing.menu .active.item:after{
+    visibility: hidden;
+}

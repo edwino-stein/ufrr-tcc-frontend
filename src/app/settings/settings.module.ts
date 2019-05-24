@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { SettingsComponent } from './settings.component';
+import { SettingsNavbarComponent } from './components/settings-navbar/settings-navbar.component';
 
 @NgModule({
   declarations: [
-      SettingsComponent
+      SettingsComponent,
+      SettingsNavbarComponent
   ],
   imports: [
     CommonModule,
