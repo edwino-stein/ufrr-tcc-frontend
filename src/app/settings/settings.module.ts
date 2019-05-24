@@ -8,6 +8,7 @@ import { SettingsNavbarComponent } from './components/settings-navbar/settings-n
 import { SettingsPageContentComponent } from './components/settings-page-content/settings-page-content.component';
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 import { SettingsDeviceComponent } from './components/settings-device/settings-device.component';
+import { SettingsStreamComponent } from './components/settings-stream/settings-stream.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SettingsDeviceComponent } from './components/settings-device/settings-d
       SettingsNavbarComponent,
       SettingsPageContentComponent,
       SettingsPageComponent,
-      SettingsDeviceComponent
+      SettingsDeviceComponent,
+      SettingsStreamComponent
   ],
   imports: [
     CommonModule,
