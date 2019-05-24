@@ -1,0 +1,19 @@
+<div class="ui container fixed-container">
+    <div class="ui two column grid">
+        <div class="tablet only four wide computer five wide tablet column">
+            <div class="ui vertical fluid menu">
+                <ng-content select=".item"></ng-content>
+                <a class="item" scrollTo="top">Topo da página</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui two column grid">
+    <div class="tablet only four wide computer five wide tablet column"></div>
+    <div class="twelve wide computer eleven wide tablet sixteen wide mobile column">
+        <div class="ui segment">
+            <ng-content select="app-settings-page-content"></ng-content>
+        </div>
+    </div>
+</div>

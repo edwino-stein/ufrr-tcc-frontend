@@ -1,0 +1,19 @@
+.fixed-container {
+    position: fixed;
+    z-index: 1000;
+    margin-top: 15px;
+    pointer-events: none;
+}
+
+.fixed-container .column {
+    padding-right: 0px;
+}
+
+.fixed-container .menu {
+    pointer-events: all;
+    margin: 0;
+}
+
+.content {
+    border-bottom: 1px solid #000;
+}

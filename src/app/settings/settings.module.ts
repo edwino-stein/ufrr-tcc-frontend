@@ -6,12 +6,14 @@ import { SharedModule } from '../shared/shared.module';
 import { SettingsComponent } from './settings.component';
 import { SettingsNavbarComponent } from './components/settings-navbar/settings-navbar.component';
 import { SettingsPageContentComponent } from './components/settings-page-content/settings-page-content.component';
+import { SettingsPageComponent } from './components/settings-page/settings-page.component';
 
 @NgModule({
   declarations: [
       SettingsComponent,
       SettingsNavbarComponent,
-      SettingsPageContentComponent
+      SettingsPageContentComponent,
+      SettingsPageComponent
   ],
   imports: [
     CommonModule,
