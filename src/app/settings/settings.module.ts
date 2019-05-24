@@ -5,11 +5,13 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { SettingsComponent } from './settings.component';
 import { SettingsNavbarComponent } from './components/settings-navbar/settings-navbar.component';
+import { SettingsPageContentComponent } from './components/settings-page-content/settings-page-content.component';
 
 @NgModule({
   declarations: [
       SettingsComponent,
-      SettingsNavbarComponent
+      SettingsNavbarComponent,
+      SettingsPageContentComponent
   ],
   imports: [
     CommonModule,
