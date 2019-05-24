@@ -10,7 +10,9 @@ const settingsRoutes: Routes = [
     {
         path: 'settings',
         component: SettingsComponent,
-        children: []
+        children: [
+            {'path': 'device', component: SettingsDeviceComponent},
+        ]
     }
 ];
 

@@ -7,13 +7,15 @@ import { SettingsComponent } from './settings.component';
 import { SettingsNavbarComponent } from './components/settings-navbar/settings-navbar.component';
 import { SettingsPageContentComponent } from './components/settings-page-content/settings-page-content.component';
 import { SettingsPageComponent } from './components/settings-page/settings-page.component';
+import { SettingsDeviceComponent } from './components/settings-device/settings-device.component';
 
 @NgModule({
   declarations: [
       SettingsComponent,
       SettingsNavbarComponent,
       SettingsPageContentComponent,
-      SettingsPageComponent
+      SettingsPageComponent,
+      SettingsDeviceComponent
   ],
   imports: [
     CommonModule,
