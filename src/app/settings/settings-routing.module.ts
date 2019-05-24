@@ -13,6 +13,7 @@ const settingsRoutes: Routes = [
         children: [
             {'path': 'device', component: SettingsDeviceComponent},
             {'path': 'stream', component: SettingsStreamComponent},
+            {'path': 'access', component: SettingsAccessComponent}
         ]
     }
 ];
