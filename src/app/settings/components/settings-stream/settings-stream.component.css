@@ -1,3 +1,27 @@
-.stream-controller {
+.form-button {
     margin: 20px 0 0px;
+}
+
+.ui.form .ui.info.message {
+    display: none;
+}
+
+.ui.form.info .ui.info.message {
+    display: block;
+}
+
+.ui.form .stop-stream {
+    display: none;
+}
+
+.ui.form.success .stop-stream {
+    display: block;
+}
+
+.ui.form.success .start-stream {
+    display: none;
+}
+
+.right-align {
+    text-align: right;
 }
