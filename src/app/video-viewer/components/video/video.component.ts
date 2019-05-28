@@ -1,4 +1,7 @@
-import { Component, OnInit, ElementRef, Renderer, HostListener, Input} from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentChecked, ElementRef, HostListener, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { StreamService } from '../../../shared/services/stream.service';
 
 import { environment } from '../../../../environments/environment'
 
@@ -7,43 +10,73 @@ import { environment } from '../../../../environments/environment'
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements OnInit {
+export class VideoComponent implements OnInit, OnDestroy, AfterContentChecked {
 
-    env: object = environment;
+    private env: object = environment;
 
     @Input() aspectRatio: string = "4:3";
     private _aspectRario: number[];
 
-    screen: any;
-    height: number;
+    private height: number;
+    private maxWidth: number;
+
+    private statusChangedSubs: Subscription;
+
+    private loading: boolean = true;
+    private status: String = 'WAITING';
 
     @HostListener('window:resize', ['$event'])
-    onResize(event) {
+    private onResize(event) {
         this.updateSize();
     }
 
     constructor(
         private elementRef: ElementRef,
-        private renderer: Renderer
+        private streamService: StreamService
     ){}
 
     ngOnInit() {
 
+        if(this.streamService.getCurrentStatus() != 'WAITING'){
+            this.loading = false;
+            this.status = this.streamService.getCurrentStatus();
+        }
+
+        this.statusChangedSubs = this.streamService.statusChanged.subscribe(
+            (status) => this.onStatusChange(status)
+        );
+
         let ar = this.aspectRatio.split(':');
         this._aspectRario = [Number(ar[0]), Number(ar[1])];
-
-        this.screen = this.elementRef.nativeElement.getElementsByClassName("screen")[0];
         this.updateSize();
     }
 
-    updateSize(){
+    ngOnDestroy(){
+        this.statusChangedSubs.unsubscribe();
+    }
+
+    private updateSize(){
+
+        let screenWidth = this.getScreenWidth();
+        if(screenWidth <= 0){
+            setTimeout(() => this.updateSize(), 10);
+            return;
+        }
 
         let maxHeight: number = window.document.body.offsetHeight - (20 + 50 + 20);
-        let maxWidth: number = maxHeight * (this._aspectRario[0]/this._aspectRario[1]);
-        this.renderer.setElementStyle(this.screen, "max-width", maxWidth.toString() + "px");
+        this.maxWidth = maxHeight * (this._aspectRario[0]/this._aspectRario[1]);
+        this.height = screenWidth * (this._aspectRario[1]/this._aspectRario[0]);
 
-        let hight: number = this.screen.offsetWidth * (this._aspectRario[1]/this._aspectRario[0]);
-        this.renderer.setElementStyle(this.screen, "height", hight.toString() + "px");
+    }
 
+    private getScreenWidth(): number {
+        let screenEl = this.elementRef.nativeElement.getElementsByClassName("screen")[0];
+        return screenEl ? screenEl.offsetWidth : 0;
+    }
+
+    private onStatusChange(status: any): void {
+        this.loading = false;
+        this.status = status['status'];
+        console.log(this.status);
     }
 }

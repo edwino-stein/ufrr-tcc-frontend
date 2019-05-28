@@ -1,13 +1,3 @@
-
-@media only screen and (max-width: 767px) {
-    .container {
-        margin: 0 !important;
-    }
-    .row {
-        border-radius: 0 !important;
-    }
-}
-
 .row {
     text-align: center;
     background-color: #000;
@@ -18,8 +8,85 @@
 }
 
 .row .screen {
-    background-color: #ddd;
+    background-color: #1b1d1d;
     display: inline-block;
     width: 100%;
+    min-height: 240px;
     overflow: hidden;
+    position: relative;
+}
+
+.screen .overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #1b1d1d;
+    display: table;
+}
+
+.screen .overlay .container {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.screen .overlay .container .message{
+    display: inline-flex;
+    width: auto;
+    text-align: initial;
+    margin: 0px;
+}
+
+.screen .overlay .container .waitting,
+.screen .overlay .container .stopped,
+.screen .overlay .container .error {
+    display: none;
+    box-shadow: none !important;
+}
+
+.screen.waitting .overlay .container .waitting,
+.screen.stopped .overlay .container .stopped,
+.screen.error .overlay .container .error {
+    display: inline-flex;
+    box-shadow: none !important;
+}
+
+.screen .overlay .container .stopped .icon,
+.screen .overlay .container .stopped .header {
+    color: #fbbd08;
+}
+
+.screen .overlay .container .error .icon,
+.screen .overlay .container .error .header {
+    color: #db2828;
+}
+
+@media screen and (max-width: 991px) {
+    .screen .overlay .container .message {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .ui.container {
+        margin: 0 !important;
+    }
+
+    .row {
+        border-radius: 0 !important;
+    }
+
+    .screen .overlay .container .message {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .screen .overlay .container .message {
+        font-size: 0.8em;
+    }
 }
