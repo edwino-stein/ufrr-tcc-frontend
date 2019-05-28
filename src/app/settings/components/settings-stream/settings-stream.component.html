@@ -16,7 +16,7 @@
 
         <div
             class="ui form info"
-            [class.info]="status == 'WAITING'"
+            [class.info]="status == 'WAITTING'"
             [class.warning]="status == 'STOPPED'"
             [class.success]="status == 'RUNNING'"
             [class.error]="status == 'ERROR'"
@@ -89,7 +89,7 @@
                 <div class="ui column centered grid">
                     <button
                         class="ui large labeled icon disabled button form-button"
-                        [class.disabled]="status != 'WAITING' || loading"
+                        [class.disabled]="status != 'WAITTING' || loading"
                         >
                         <i class="wrench icon"></i>
                         Começar teste
