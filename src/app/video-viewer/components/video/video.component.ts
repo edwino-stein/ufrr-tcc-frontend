@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterContentChecked, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, HostListener, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { StreamService } from '../../../shared/services/stream.service';
@@ -10,7 +10,7 @@ import { environment } from '../../../../environments/environment'
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements OnInit, OnDestroy, AfterContentChecked {
+export class VideoComponent implements OnInit, OnDestroy {
 
     private env: object = environment;
 
