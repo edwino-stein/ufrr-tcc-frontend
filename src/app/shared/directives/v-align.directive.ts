@@ -1,9 +1,9 @@
-import { Directive, Renderer, ElementRef, HostListener} from '@angular/core';
+import { Directive, OnInit, AfterViewChecked, Renderer, ElementRef, HostListener} from '@angular/core';
 
 @Directive({
     selector: '[appVAlign]'
 })
-export class VAlignDirective {
+export class VAlignDirective implements OnInit, AfterViewChecked {
 
     @HostListener('window:resize', ['$event'])
     onResize(event) {
@@ -18,8 +18,10 @@ export class VAlignDirective {
 
     ngOnInit(): void {
         this.renderer.setElementStyle(this.elementRef.nativeElement, "position", "absolute");
-        let me = this;
-        setTimeout(() => me.updatePosition(), 50)
+    }
+
+    ngAfterViewChecked() {
+        this.updatePosition();
     }
 
     updatePosition(){
