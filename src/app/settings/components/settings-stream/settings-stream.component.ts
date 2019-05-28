@@ -47,7 +47,6 @@ export class SettingsStreamComponent implements OnInit, OnDestroy {
 
     private onAction(respose: any): void {
         this.loading = false;
-        this.status = respose.respose.data.status;
     }
 
     onStartBtnClicked(){

@@ -65,6 +65,7 @@ export class StreamService implements OnInit, OnDestroy {
     }
 
     onStartResponse(respose: ResponseData){
+        this.onFetchStatus(respose);
         this.actionResponse.emit({
             'action': 'start',
             'respose': respose
@@ -77,6 +78,7 @@ export class StreamService implements OnInit, OnDestroy {
     }
 
     onStopResponse(respose: ResponseData){
+        this.onFetchStatus(respose);
         this.actionResponse.emit({
             'action': 'stop',
             'respose': respose
