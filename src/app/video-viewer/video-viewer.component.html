@@ -4,24 +4,45 @@
         <app-video></app-video>
 
         <app-video-status-bar>
-
             <app-video-status-bar-item type="status">
-                <i class="fas fa-video"></i>
-                <span class="mobile hidden" > Transmitindo...</span>
+                <div class="video-{{ status.toLocaleLowerCase() }}">
+                    <div class="ui basic large label running">
+                        <i class="record icon"></i>
+                        <span class="mobile hidden" >Transmitindo</span>
+                    </div>
+                    <div class="ui basic large label waitting">
+                        <i class="hourglass half icon"></i>
+                        <span class="mobile hidden" > Aguardando</span>
+                    </div>
+                    <div class="ui large yellow label stopped">
+                        <i class="exclamation triangle icon"></i>
+                        <span class="mobile hidden" > Parado</span>
+                    </div>
+                    <div class="ui large red label error">
+                        <i class="x icon"></i>
+                        <span class="mobile hidden" > Erro</span>
+                    </div>
+                </div>
             </app-video-status-bar-item>
-            <app-video-status-bar-item type="status">
-                <i class="fas fa-users"></i>
-                <span> 1</span><span class="mobile hidden"> pessoa(s) assistindo</span>
+
+            <app-video-status-bar-item
+                type="status"
+                *ngIf="status == 'RUNNING'"
+                >
+                <div class="ui basic large label">
+                    <i class="users icon"></i>{{ watchingPeaple }}
+                </div>
             </app-video-status-bar-item>
 
             <app-video-status-bar-item type="action">
-                <button class="circular ui compact icon basic button">
-                    <i class="fas fa-expand"></i>
+                <button class="ui circular compact icon button">
+                    <i class="expand icon"></i>
                 </button>
             </app-video-status-bar-item>
+
             <app-video-status-bar-item type="action">
-                <a routerLink="/settings/stream" class="circular ui compact icon basic button">
-                    <i class="fas fa-sliders-h"></i>
+                <a routerLink="/settings/stream" class="ui circular compact icon button">
+                    <i class="sliders horizontal icon"></i>
                 </a>
             </app-video-status-bar-item>
 

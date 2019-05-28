@@ -11,8 +11,32 @@ div[appVAlign] {
     padding: 0;
 }
 
+.running,
+.waitting,
+.stopped,
+.error {
+    display: none;
+}
+
+.video-running .running,
+.video-waitting .waitting,
+.video-stopped .stopped,
+.video-error .error {
+    display: block;
+}
+
 @media only screen and (max-width: 767px) {
     .mobile.hidden {
         display: none !important
+    }
+    .mobile.only.inline {
+        display: inline !important
+    }
+
+    .video-running .icon,
+    .video-waitting .icon,
+    .video-stopped .icon,
+    .video-error .icon {
+        margin: 0;
     }
 }
