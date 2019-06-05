@@ -22,6 +22,7 @@ export class VideoComponent implements OnInit, OnDestroy {
 
     private statusChangedSubs: Subscription;
 
+    private isStreaming: boolean = false;
     private loading: boolean = true;
     private status: String = 'WAITING';
 
@@ -49,6 +50,8 @@ export class VideoComponent implements OnInit, OnDestroy {
         let ar = this.aspectRatio.split(':');
         this._aspectRario = [Number(ar[0]), Number(ar[1])];
         this.updateSize();
+
+        if(this.status == 'RUNNING') this.isStreaming = true;
     }
 
     ngOnDestroy(){
@@ -78,5 +81,8 @@ export class VideoComponent implements OnInit, OnDestroy {
         this.loading = false;
         this.status = status['status'];
         console.log(this.status);
+
+        if(this.status == 'RUNNING') this.isStreaming = true;
+        else this.isStreaming = false;
     }
 }

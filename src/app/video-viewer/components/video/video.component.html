@@ -11,7 +11,7 @@
                 url="{{ env.serverStreamUrl }}"
                 protocol="{{ env.serverStreamProtocol }}"
             ></app-mpeg-player>
-            <div class="overlay">
+            <div class="overlay" *ngIf="!isStreaming">
                 <div class="container">
 
                     <div class="ui black icon big message waitting">
