@@ -5,3 +5,28 @@
 .ui.pointing.menu .active.item:after{
     visibility: hidden;
 }
+
+
+@media only screen and (max-width: 767px) {
+
+    .ui.pointing.menu {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .ui.pointing.menu .item.back-btn {
+        width: 44px;
+    }
+
+    .ui.pointing.menu .item {
+        display: table-cell !important;
+        text-align: center;
+        width: calc((100%)/3);
+        padding: .92857143em 0;
+    }
+
+    .ui.pointing.menu .item:last-child::before{
+        background: none;
+    }
+}
