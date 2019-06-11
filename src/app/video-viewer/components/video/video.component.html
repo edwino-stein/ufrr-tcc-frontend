@@ -2,10 +2,6 @@
     <div class="row mobile">
         <div
             class="screen {{ status.toLocaleLowerCase() }}"
-            [ngStyle]="{
-                'max-width': maxWidth + 'px',
-                'height': height + 'px'
-            }"
             >
             <app-mpeg-player
                 url="{{ env.serverStreamUrl }}"

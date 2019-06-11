@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, ElementRef, Renderer2, HostListener, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { StreamService } from '../../../shared/services/stream.service';
@@ -10,15 +10,12 @@ import { environment } from '../../../../environments/environment'
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements OnInit, OnDestroy {
+export class VideoComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     private env: object = environment;
 
     @Input() aspectRatio: string = "4:3";
     private _aspectRario: number[];
-
-    private height: number;
-    private maxWidth: number;
 
     private statusChangedSubs: Subscription;
 
@@ -33,6 +30,7 @@ export class VideoComponent implements OnInit, OnDestroy {
 
     constructor(
         private elementRef: ElementRef,
+        private renderer: Renderer2,
         private streamService: StreamService
     ){}
 
@@ -49,7 +47,6 @@ export class VideoComponent implements OnInit, OnDestroy {
 
         let ar = this.aspectRatio.split(':');
         this._aspectRario = [Number(ar[0]), Number(ar[1])];
-        this.updateSize();
 
         if(this.status == 'RUNNING') this.isStreaming = true;
     }
@@ -58,23 +55,35 @@ export class VideoComponent implements OnInit, OnDestroy {
         this.statusChangedSubs.unsubscribe();
     }
 
+    ngAfterViewChecked(): void {
+        this.updateSize();
+    }
+
     private updateSize(){
 
-        let screenWidth = this.getScreenWidth();
+        let screenEl = this.getScreen();
+        if(screenEl == null){
+            setTimeout(() => this.updateSize(), 10);
+            return;
+        }
+
+        let screenWidth = screenEl.offsetWidth ? screenEl.offsetWidth : 0;
         if(screenWidth <= 0){
             setTimeout(() => this.updateSize(), 10);
             return;
         }
 
         let maxHeight: number = window.document.body.offsetHeight - (20 + 50 + 20);
-        this.maxWidth = maxHeight * (this._aspectRario[0]/this._aspectRario[1]);
-        this.height = screenWidth * (this._aspectRario[1]/this._aspectRario[0]);
+        let maxWidth: number = maxHeight * (this._aspectRario[0]/this._aspectRario[1]);
+        let height: number = screenWidth * (this._aspectRario[1]/this._aspectRario[0]);
 
+        this.renderer.setStyle(screenEl, 'max-width', maxWidth + 'px');
+        this.renderer.setStyle(screenEl, 'height', height + 'px');
     }
 
-    private getScreenWidth(): number {
+    private getScreen(): any {
         let screenEl = this.elementRef.nativeElement.getElementsByClassName("screen")[0];
-        return screenEl ? screenEl.offsetWidth : 0;
+        return screenEl ? screenEl : null;
     }
 
     private onStatusChange(status: any): void {
