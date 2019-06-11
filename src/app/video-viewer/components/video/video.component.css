@@ -54,11 +54,6 @@
     box-shadow: none !important;
 }
 
-.screen .overlay .container .stopped .icon,
-.screen .overlay .container .stopped .header {
-    color: #fbbd08;
-}
-
 .screen .overlay .container .error .icon,
 .screen .overlay .container .error .header {
     color: #db2828;

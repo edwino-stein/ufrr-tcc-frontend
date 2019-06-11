@@ -16,8 +16,7 @@
 
         <div
             class="ui form info"
-            [class.info]="status == 'WAITTING'"
-            [class.warning]="status == 'STOPPED'"
+            [class.info]="status == 'STOPPED'"
             [class.success]="status == 'RUNNING'"
             [class.error]="status == 'ERROR'"
             [class.loading]="loading"
@@ -36,10 +35,6 @@
                 <div class="ui info message">
                     <div class="header">Transmissão está em parada.</div>
                     <p>Para começar a transmissão, basta clicar em <b>Iniciar Transmissão </b>.</p>
-                </div>
-                <div class="ui warning message">
-                    <div class="header">O Servidor de transmissão está parado</div>
-                    <p>Tente reinicar o aparelho caso o erro pessistir.</p>
                 </div>
                 <div class="ui error message">
                     <div class="header">Ocorreu algum erro com a transmissão.</div>
@@ -89,7 +84,7 @@
                 <div class="ui column centered grid">
                     <button
                         class="ui large labeled icon disabled button form-button"
-                        [class.disabled]="status != 'WAITTING' || loading"
+                        [class.disabled]="status != 'STOPPED' || loading"
                         >
                         <i class="wrench icon"></i>
                         Começar teste

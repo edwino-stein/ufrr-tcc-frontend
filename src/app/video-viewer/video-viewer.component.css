@@ -16,14 +16,12 @@
 }
 
 .running,
-.waitting,
 .stopped,
 .error {
     display: none;
 }
 
 .video-running .running,
-.video-waitting .waitting,
 .video-stopped .stopped,
 .video-error .error {
     display: block;
@@ -38,7 +36,6 @@
     }
 
     .video-running .icon,
-    .video-waitting .icon,
     .video-stopped .icon,
     .video-error .icon {
         margin: 0;
