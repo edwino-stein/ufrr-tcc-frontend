@@ -12,6 +12,7 @@ import { SettingsStreamComponent } from './components/settings-stream/settings-s
 import { SettingsAccessComponent } from './components/settings-access/settings-access.component';
 import { SettingsLoginComponent } from './components/settings-login/settings-login.component';
 
+import { SettingsRouterGuardService } from './settings-router-guard.service'
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { SettingsLoginComponent } from './components/settings-login/settings-log
         CommonModule,
         SharedModule,
         SettingsRoutingModule
-    ]
+    ],
+    providers: [SettingsRouterGuardService]
 })
 export class SettingsModule { }
