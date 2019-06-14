@@ -1,0 +1,29 @@
+<form
+    #loginFrom="ngForm"
+    (ngSubmit)="onLogin(loginFrom)"
+    class="ui form"
+    [class.error]="submited && formError"
+    [class.loading]="loading"
+    >
+    <div
+        class="field"
+        [class.error]="submited && formError"
+        >
+        <div class="ui pointing below red label">
+            {{ passwdError }}
+        </div>
+        <div class="ui left icon input">
+            <input
+                #passwd="ngModel"
+                type="password"
+                name="password"
+                placeholder="Senha"
+                required
+                ngModel>
+            <i class="lock icon"></i>
+        </div>
+    </div>
+    <button type="submit" class="ui fluid green button">
+        Acessar
+    </button>
+</form>

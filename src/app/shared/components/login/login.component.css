@@ -1,0 +1,11 @@
+.ui.pointing.label {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: -3em;
+    left: 0;
+}
+
+.error .ui.pointing.label {
+    display: block;
+}
