@@ -10,21 +10,24 @@ import { SettingsPageComponent } from './components/settings-page/settings-page.
 import { SettingsDeviceComponent } from './components/settings-device/settings-device.component';
 import { SettingsStreamComponent } from './components/settings-stream/settings-stream.component';
 import { SettingsAccessComponent } from './components/settings-access/settings-access.component';
+import { SettingsLoginComponent } from './components/settings-login/settings-login.component';
+
 
 @NgModule({
-  declarations: [
-      SettingsComponent,
-      SettingsNavbarComponent,
-      SettingsPageContentComponent,
-      SettingsPageComponent,
-      SettingsDeviceComponent,
-      SettingsStreamComponent,
-      SettingsAccessComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    SettingsRoutingModule
-  ]
+    declarations: [
+        SettingsComponent,
+        SettingsNavbarComponent,
+        SettingsPageContentComponent,
+        SettingsPageComponent,
+        SettingsDeviceComponent,
+        SettingsStreamComponent,
+        SettingsAccessComponent,
+        SettingsLoginComponent
+    ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        SettingsRoutingModule
+    ]
 })
 export class SettingsModule { }
