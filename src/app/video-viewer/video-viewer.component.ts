@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { StreamService } from '../shared/services/stream.service';
@@ -16,7 +16,10 @@ export class VideoViewerComponent implements OnInit, OnDestroy {
     status: String = 'WAITTING';
     watchingPeaple: number = 0;
 
-    constructor(private streamService: StreamService) { }
+    constructor(
+        private streamService: StreamService,
+        private renderer: Renderer2
+    ) { }
 
     ngOnInit(){
 
@@ -28,10 +31,13 @@ export class VideoViewerComponent implements OnInit, OnDestroy {
         this.statusChangedSubs = this.streamService.statusChanged.subscribe(
             (status) => this.onStatusChange(status)
         );
+
+        this.renderer.addClass(<any>document.body, 'no-footer');
     }
 
     ngOnDestroy(){
         this.statusChangedSubs.unsubscribe();
+        this.renderer.removeClass(<any>document.body, 'no-footer');
     }
 
     private onStatusChange(status: any): void {
