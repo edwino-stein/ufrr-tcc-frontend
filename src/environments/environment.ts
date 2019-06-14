@@ -10,6 +10,11 @@ export const environment = {
         status: '/backend/stream/status',
         start: '/backend/stream/start',
         stop: '/backend/stream/stop'
+    },
+    defaultUser: 'admin',
+    authUrls: {
+        login: '/backend/auth/login',
+        logout: '/backend/auth/logout'
     }
 };
 
