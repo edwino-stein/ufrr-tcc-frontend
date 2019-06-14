@@ -1,8 +1,62 @@
-<p>
-  home works!
-</p>
+<div class="ui container">
+    <div class="ui placeholder segment">
+        <div class="ui one column center aligned grid main-header">
+            <div class="middle aligned row">
+                <h1 class="ui header">
+                    <div class="content">Bem vindo</div>
+                    <div class="sub header">
+                        Acesse o sistema por uma das opções abaixo
+                    </div>
+                </h1>
+            </div>
+        </div>
+        <div class="ui two column stackable center aligned grid access-options">
+            <div class="middle aligned row">
+                <div class="column">
+                    <h3 class="ui icon header">
+                        <i class="record icon"></i>
+                        <div class="content">
+                            Acompanhar a transmissão
+                            <div class="sub header">
+                                A transmissão estar ocorrendo neste instante<br>
+                                XX pessoas estão acompanhando
+                            </div>
+                        </div>
+                    </h3>
+                    <a routerLink="/video-viewer" class="ui primary fluid button">
+                        Acompanhar
+                    </a>
+                </div>
+                <div class="ui vertical divider">Ou</div>
+                <div class="column">
+                    <h3 class="ui icon header">
+                        <i class="cogs icon"></i>
+                        <div class="content">
+                            Painel de controle
+                            <div class="sub header">
+                                Opções gerais da transmissão e do dispositivo
+                            </div>
+                        </div>
+                    </h3>
 
-<ul>
-    <li><a routerLink="/video-viewer">Video Viewer</a></li>
-    <li><a routerLink="/settings/stream">Settings</a></li>
-</ul>
+                    <app-login *ngIf="!auth.checkSession()" ></app-login>
+                    <div *ngIf="auth.checkSession()">
+                        <p>Você se autenticou como administrador</p>
+                        <div class="ui fluid buttons">
+                            <a routerLink="/settings/stream" class="ui green button">Acessar</a>
+                            <div class="or"></div>
+                            <button
+                                type="button"
+                                class="ui red button"
+                                [class.loading]="loading"
+                                (click)="onLogout()"
+                                >
+                                Desconectar-se
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

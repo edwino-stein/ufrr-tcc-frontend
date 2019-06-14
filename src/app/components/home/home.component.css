@@ -1,0 +1,83 @@
+.ui.container {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.ui.segment {
+    position: relative;
+    max-width: 730px;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.main-header {
+    margin-top: 0.1rem;
+}
+
+.main-header .ui.header {
+    text-align: center
+}
+
+.access-options {
+    margin-bottom: 1rem;
+}
+
+.access-options .column:first-child {
+    padding-right: 2.71rem;
+    padding-left: 2rem;
+}
+
+.access-options .column:last-child {
+    padding-right: 2rem;
+    padding-left: 1.2rem;
+}
+
+.access-options .ui.primary.button {
+    margin: 1rem 0 0;
+}
+
+.ui.buttons .or:before {
+    content: 'OU';
+}
+
+@media only screen and (max-width: 767px) {
+
+    .ui.container {
+        margin-top: 15px;
+    }
+
+    .access-options {
+        margin-bottom: 0rem;
+    }
+
+    .ui.grid .column+.ui.vertical.divider {
+        height: auto;
+        display: block;
+        width: 100%;
+    }
+
+    .ui.vertical.divider{
+        position: relative !important;
+    }
+
+    .ui.vertical.divider:before,
+    .ui.vertical.divider:after {
+        top: calc(50% - 2px) !important;
+        content: '' !important;
+        z-index: 3;
+        border-top: 1px solid rgba(34,36,38,.15);
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        width: calc(50% - 3rem) !important;
+        height: 0 !important;
+        position: absolute !important;
+        background-image: none !important;
+    }
+
+    .ui.vertical.divider:before {
+        left: 1.5rem !important;
+    }
+
+    .ui.vertical.divider:after{
+        left: calc(50% + 1.5rem) !important;
+    }
+}
