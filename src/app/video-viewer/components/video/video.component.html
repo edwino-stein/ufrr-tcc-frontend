@@ -4,8 +4,8 @@
             class="screen {{ status.toLocaleLowerCase() }}"
             >
             <app-mpeg-player
-                url="{{ env.serverStreamUrl }}"
-                protocol="{{ env.serverStreamProtocol }}"
+                url="{{ streamHost }}"
+                protocol="{{ streamprotocol }}"
             ></app-mpeg-player>
             <div class="overlay" *ngIf="!isStreaming">
                 <div class="container">

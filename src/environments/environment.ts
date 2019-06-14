@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-    serverStreamUrl: 'ws://localhost:8888',
-    serverStreamProtocol: 'ws-mpegts'
+    serverStreamPort: 8088,
+    serverStreamProtocol: 'ws-mpegts',
     streamControlUrls: {
         status: '/backend/stream/status',
         start: '/backend/stream/start',

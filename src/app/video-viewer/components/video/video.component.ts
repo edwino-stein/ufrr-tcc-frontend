@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs';
 
 import { StreamService } from '../../../shared/services/stream.service';
 
-import { environment } from '../../../../environments/environment'
-
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -12,7 +10,8 @@ import { environment } from '../../../../environments/environment'
 })
 export class VideoComponent implements OnInit, OnDestroy, AfterViewChecked {
 
-    private env: object = environment;
+    private streamHost: string;
+    private streamprotocol: string;
 
     @Input() aspectRatio: string = "4:3";
     private _aspectRario: number[];
@@ -35,6 +34,9 @@ export class VideoComponent implements OnInit, OnDestroy, AfterViewChecked {
     ){}
 
     ngOnInit() {
+
+        this.streamHost = this.streamService.getStreamHostUrl();
+        this.streamprotocol = this.streamService.getStreamProtocol();
 
         if(this.streamService.getCurrentStatus() != 'WAITING'){
             this.loading = false;

@@ -88,4 +88,28 @@ export class StreamService implements OnInit, OnDestroy {
     getCurrentStatus(): String {
         return this.status;
     }
+
+    private getHostName() : string{
+        return window.location.hostname;
+    }
+
+    getStreamHostUrl(): string {
+
+        let host:string = this.getHostName();
+        if(environment.hasOwnProperty('serverStreamHost')){
+            host = environment['serverStreamHost'];
+        }
+
+        let port:number = 8088;
+        if(environment.hasOwnProperty('serverStreamPort')){
+            port = environment['serverStreamPort'];
+        }
+
+        return 'ws://' + host + ':' + String(port);
+    }
+
+    getStreamProtocol(): string {
+        return  environment.hasOwnProperty('serverStreamProtocol') ?
+                environment['serverStreamProtocol'] : 'ws-mpegts';
+    }
 }
