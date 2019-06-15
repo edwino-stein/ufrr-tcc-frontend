@@ -11,10 +11,11 @@ export class SettingsStreamComponent implements OnInit, OnDestroy {
 
     private statusChangedSubs: Subscription;
     private actionResponseSubs: Subscription;
+    private watchingChangedSubs: Subscription;
 
     loading: boolean = true;
     status: String = 'NONE';
-    watchingPeaple: String = 'XX';
+    watchingPeaple: number = 0;
 
     constructor(private streamService: StreamService){}
 
@@ -23,10 +24,15 @@ export class SettingsStreamComponent implements OnInit, OnDestroy {
         if(this.streamService.getCurrentStatus() != 'NONE'){
             this.loading = false;
             this.status = this.streamService.getCurrentStatus();
+            this.watchingPeaple = this.streamService.getCurrentWatchingPeaple();
         }
 
         this.statusChangedSubs = this.streamService.statusChanged.subscribe(
             (status) => this.onStatusChange(status)
+        );
+
+        this.watchingChangedSubs = this.streamService.watchingChanged.subscribe(
+            (status) => this.onWatchingChange(status)
         );
 
         this.actionResponseSubs = this.streamService.actionResponse.subscribe(
@@ -37,12 +43,16 @@ export class SettingsStreamComponent implements OnInit, OnDestroy {
     ngOnDestroy(){
         this.statusChangedSubs.unsubscribe();
         this.actionResponseSubs.unsubscribe();
+        this.watchingChangedSubs.unsubscribe();
     }
 
     private onStatusChange(status: any): void {
         this.loading = false;
         this.status = status['status'];
-        console.log(status['status']);
+    }
+
+    private onWatchingChange(status: any): void {
+        this.watchingPeaple = status.watchingPeaple
     }
 
     private onAction(respose: any): void {
