@@ -17,9 +17,12 @@
                         <i class="record icon"></i>
                         <div class="content">
                             Acompanhar a transmissão
-                            <div class="sub header">
-                                A transmissão estar ocorrendo neste instante<br>
-                                XX pessoas estão acompanhando
+                            <div class="sub header" *ngIf="status == 'RUNNING'">
+                                A transmissão estar ocorrendo no momento<br>
+                                <b>{{ watchingPeaple }}</b> pessoas estão acompanhando
+                            </div>
+                            <div class="sub header" *ngIf="status == 'STOPPED'">
+                                Sem transmissão no momento<br>
                             </div>
                         </div>
                     </h3>
