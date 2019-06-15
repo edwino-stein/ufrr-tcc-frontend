@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment'
 
 export interface StatusResponse {
     status: String;
+    watching: number;
 }
 
 export interface ResponseData {
@@ -24,8 +25,10 @@ export class StreamService implements OnInit, OnDestroy {
 
     private subscription: Subscription;
     private status: String = "NONE";
+    private watchingPeaple: number = 0;
 
     readonly statusChanged = new EventEmitter();
+    readonly watchingChanged = new EventEmitter();
     readonly actionResponse = new EventEmitter();
 
     constructor(private http: HttpClient) {}
@@ -43,19 +46,29 @@ export class StreamService implements OnInit, OnDestroy {
                  .subscribe((data: ResponseData) => this.onFetchStatus(data));
     }
 
-    private onFetchStatus(respose: ResponseData): void {
+    private onFetchStatus(response: ResponseData): void {
 
-        if(!respose.result) return;
+        if(!response.result) return;
 
-        if(this.status != respose.data.status){
+        if(this.status != response.data.status){
 
             this.statusChanged.emit({
-                status: respose.data.status,
+                status: response.data.status,
                 oldStatus: this.status,
-                respose: respose
+                response: response
             });
 
-            this.status = respose.data.status;
+            this.status = response.data.status;
+        }
+
+        if(this.watchingPeaple != response.data.watching){
+            this.watchingChanged.emit({
+                watchingPeaple: response.data.watching,
+                oldWatchingPeaple: this.watchingPeaple,
+                response: response
+            });
+
+            this.watchingPeaple = response.data.watching;
         }
     }
 
@@ -64,11 +77,11 @@ export class StreamService implements OnInit, OnDestroy {
                  .subscribe((data: ResponseData) => this.onStartResponse(data));
     }
 
-    onStartResponse(respose: ResponseData){
-        this.onFetchStatus(respose);
+    onStartResponse(response: ResponseData){
+        this.onFetchStatus(response);
         this.actionResponse.emit({
             'action': 'start',
-            'respose': respose
+            'respose': response
         });
     }
 
@@ -77,16 +90,20 @@ export class StreamService implements OnInit, OnDestroy {
                  .subscribe((data: ResponseData) => this.onStopResponse(data));
     }
 
-    onStopResponse(respose: ResponseData){
-        this.onFetchStatus(respose);
+    onStopResponse(response: ResponseData){
+        this.onFetchStatus(response);
         this.actionResponse.emit({
             'action': 'stop',
-            'respose': respose
+            'response': response
         });
     }
 
     getCurrentStatus(): String {
         return this.status;
+    }
+
+    getCurrentWatchingPeaple(): number {
+        return this.watchingPeaple;
     }
 
     private getHostName() : string{
