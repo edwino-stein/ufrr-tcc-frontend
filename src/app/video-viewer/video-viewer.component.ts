@@ -11,25 +11,31 @@ import { StreamService } from '../shared/services/stream.service';
 export class VideoViewerComponent implements OnInit, OnDestroy {
 
     private statusChangedSubs: Subscription;
+    private watchingChangedSubs: Subscription;
 
     loading: boolean = true;
-    status: String = 'WAITTING';
+    status: String = 'STOPPED';
     watchingPeaple: number = 0;
 
     constructor(
         private streamService: StreamService,
         private renderer: Renderer2
-    ) { }
+    ) {}
 
     ngOnInit(){
 
-        if(this.streamService.getCurrentStatus() != 'WAITING'){
+        if(this.streamService.getCurrentStatus() != 'STOPPED'){
             this.loading = false;
             this.status = this.streamService.getCurrentStatus();
+            this.watchingPeaple = this.streamService.getCurrentWatchingPeaple();
         }
 
         this.statusChangedSubs = this.streamService.statusChanged.subscribe(
             (status) => this.onStatusChange(status)
+        );
+
+        this.watchingChangedSubs = this.streamService.watchingChanged.subscribe(
+            (status) => this.onWatchingChange(status)
         );
 
         this.renderer.addClass(<any>document.body, 'no-footer');
@@ -37,12 +43,16 @@ export class VideoViewerComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(){
         this.statusChangedSubs.unsubscribe();
+        this.watchingChangedSubs.unsubscribe();
         this.renderer.removeClass(<any>document.body, 'no-footer');
     }
 
     private onStatusChange(status: any): void {
         this.loading = false;
         this.status = status['status'];
-        console.log(status['status']);
+    }
+
+    private onWatchingChange(status: any): void {
+        this.watchingPeaple = status.watchingPeaple
     }
 }
